@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/bookmarks.css}" />
+    <meta charset="UTF-8">
+    <title>Bookmark List</title>
+</head>
+<body>
+    <h1>Bookmarks</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>URL</th>
+                <th>Description</th>
+                <th>Categories</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="bookmark : ${bookmarks}">
+                <td th:text="${bookmark.id}"></td>
+                <td th:text="${bookmark.title}"></td>
+                <td><a th:href="${bookmark.url}" th:text="${bookmark.url}"></a></td>
+                <td th:text="${bookmark.description}"></td>
+				<td th:text="${bookmarkCategories[bookmark.id]}"></td>
+                <td>
+                    <a th:href="@{/bookmark/edit/{id}(id=${bookmark.id})}">Edit</a> |
+                    <a th:href="@{/bookmark/delete/{id}(id=${bookmark.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/bookmark/add">Add new bookmark</a>
+</body>
+</html>
