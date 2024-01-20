@@ -14,9 +14,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "categories")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Category {
 	
 	@Id
@@ -26,4 +23,33 @@ public class Category {
 	
 	@ManyToMany(mappedBy = "categories")
 	private List<Bookmark> bookmarks;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Bookmark> getBookmarks() {
+		return bookmarks;
+	}
+
+	public void setBookmarks(List<Bookmark> bookmarks) {
+		this.bookmarks = bookmarks;
+	}
+	
+	@Override
+	public String toString() {
+		return "Category{" + "id=" + id + ", name='" + name + '\'' + '}';
+	}
 }

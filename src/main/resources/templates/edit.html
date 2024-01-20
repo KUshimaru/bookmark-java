@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Edit Bookmark</title>
-    <link rel="stylesheet" th:href="@{/css/bookmarks.css}" />
+	<meta charset="UTF-8">
+	<title>ブックマーク編集</title>
+	<link rel="stylesheet" th:href="@{/css/bookmarks.css}" />
 </head>
+
 <body>
-    <h1>Edit Bookmark</h1>
+	<h1>ブックマーク編集</h1>
 
-    <form th:action="@{/bookmark/{id}(id=${bookmark.id})}" th:object="${bookmark}" method="post">
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" th:field="*{title}" required>
-        </div>
-        <div>
-            <label for="url">URL:</label>
-            <input type="url" id="url" th:field="*{url}" required>
-        </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" th:field="*{description}"></textarea>
-        </div>
-        <div>
-            <button type="submit">Update</button>
-        </div>
-    </form>
+	<form th:action="@{/bookmark/{id}(id=${bookmark.id})}" th:object="${bookmark}" method="post">
+		<div>
+			<label for="title">タイトル:</label>
+			<input type="text" id="title" th:field="*{title}" required>
+		</div>
+		<div>
+			<label for="url">URL:</label>
+			<input type="url" id="url" th:field="*{url}" required>
+		</div>
+		<div>
+			<label for="description">説明:</label>
+			<textarea id="description" th:field="*{description}"></textarea>
+		</div>
+		<div>
+			<label>カテゴリー:</label>
+			<select th:field="*{categories}">
+				<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+			</select>
+		</div>
+		<div>
+			<button type="submit">更新</button>
+		</div>
+	</form>
 
-    <a href="/bookmark">Back to List</a>
+	<a href="/bookmark">ブックマーク一覧へ戻る</a>
 </body>
+
 </html>

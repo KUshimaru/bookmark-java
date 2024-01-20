@@ -10,4 +10,5 @@ public interface CategoryService {
 	Optional<Category> findById(Long id);
 	Category save(Category category);
 	void deleteById(Long id);
+	boolean isCategoryNameExist(String name);
 }

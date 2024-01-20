@@ -26,12 +26,17 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 	
 	@Override
-	public Category save(Category category) {
+    public Category save(Category category) {
 		return categoryRepository.save(category);
-	}
+    }
 	
 	@Override
 	public void deleteById(Long id) {
 		categoryRepository.deleteById(id);
 	}
+	
+	@Override
+    public boolean isCategoryNameExist(String name) {
+        return categoryRepository.findByName(name).isPresent();
+    }
 }

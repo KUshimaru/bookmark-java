@@ -3,20 +3,24 @@
 <head>
 	<link rel="stylesheet" th:href="@{/css/bookmarks.css}" />
     <meta charset="UTF-8">
-    <title>Bookmark List</title>
+    <title>ブックマーク一覧</title>
 </head>
 <body>
-    <h1>Bookmarks</h1>
+    <h1>ブックマーク一覧</h1>
+
+    <div style="margin-bottom: 20px;">
+        <a href="/bookmark/add" style="background-color: #4CAF50; color: white; padding: 10px 15px; text-align: center; text-decoration: none; display: inline-block;">ブックマークを追加</a>
+    </div>
 
     <table border="1">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
+                <th>タイトル</th>
                 <th>URL</th>
-                <th>Description</th>
-                <th>Categories</th>
-                <th>Actions</th>
+                <th>説明</th>
+                <th>カテゴリー</th>
+                <th>アクション</th>
             </tr>
         </thead>
         <tbody>
@@ -27,13 +31,15 @@
                 <td th:text="${bookmark.description}"></td>
 				<td th:text="${bookmarkCategories[bookmark.id]}"></td>
                 <td>
-                    <a th:href="@{/bookmark/edit/{id}(id=${bookmark.id})}">Edit</a> |
-                    <a th:href="@{/bookmark/delete/{id}(id=${bookmark.id})}">Delete</a>
+                    <a th:href="@{/bookmark/edit/{id}(id=${bookmark.id})}">編集</a> |
+                    <a th:href="@{/bookmark/delete/{id}(id=${bookmark.id})}">削除</a>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <a href="/bookmark/add">Add new bookmark</a>
+    <div style="margin-top: 20px;">
+        <a href="/category">カテゴリー一覧</a>
+    </div>
 </body>
 </html>

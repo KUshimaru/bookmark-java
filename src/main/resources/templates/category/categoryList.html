@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>カテゴリー一覧</title>
+    <link rel="stylesheet" th:href="@{/css/bookmarks.css}" />
+</head>
+<body>
+    <h1>カテゴリー一覧</h1>
+
+	<div th:if="${not #lists.isEmpty(flash)}" class="flash-messages">
+        <p th:each="msg : ${flash}" th:text="${msg}"></p>
+    </div>
+	
+    <div style="margin-bottom: 20px;">
+        <a href="/category/add" style="background-color: #4CAF50; color: white; padding: 10px 15px; text-align: center; text-decoration: none; display: inline-block;">カテゴリーを追加</a>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>名前</th>
+                <th>削除アクション</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.name}"></td>
+                <td>
+                    <a th:href="@{/category/delete/{id}(id=${category.id})}">削除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/bookmark">ブックマーク一覧へ戻る</a>
+</body>
+</html>
