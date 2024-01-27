@@ -15,7 +15,7 @@ import com.example.bookmark.service.BookmarkService;
 import com.example.bookmark.service.CategoryService;
 
 @Controller
-@RequestMapping("/bookmarktool")
+@RequestMapping("/bookmarktool.onrender.com")
 public class BookmarkController {
 
 	private final BookmarkService bookmarkService;
