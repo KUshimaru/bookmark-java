@@ -27,11 +27,6 @@ public class BookmarkController {
 		this.categoryService = categoryService;
 	}
 
-	@GetMapping("/")
-	public String redirectToBookmark() {
-		return "redirect:/bookmark";
-	}
-
 	@GetMapping
 	public String list(Model model) {
 		List<Bookmark> bookmarks = bookmarkService.findAll();
