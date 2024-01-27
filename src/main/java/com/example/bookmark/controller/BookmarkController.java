@@ -15,7 +15,7 @@ import com.example.bookmark.service.BookmarkService;
 import com.example.bookmark.service.CategoryService;
 
 @Controller
-@RequestMapping("/bookmarktool.onrender.com")
+@RequestMapping("/bookmark")
 public class BookmarkController {
 
 	private final BookmarkService bookmarkService;
@@ -27,7 +27,7 @@ public class BookmarkController {
 		this.categoryService = categoryService;
 	}
 
-	@GetMapping
+	@GetMapping("/")
 	public String list(Model model) {
 		List<Bookmark> bookmarks = bookmarkService.findAll();
 		Map<Long, String> bookmarkCategories = new HashMap<>();
