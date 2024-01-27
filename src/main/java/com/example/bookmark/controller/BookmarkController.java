@@ -28,6 +28,11 @@ public class BookmarkController {
 	}
 
 	@GetMapping("/")
+	public String redirectToBookmark() {
+		return "redirect:/bookmark";
+	}
+
+	@GetMapping
 	public String list(Model model) {
 		List<Bookmark> bookmarks = bookmarkService.findAll();
 		Map<Long, String> bookmarkCategories = new HashMap<>();
